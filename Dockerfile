@@ -13,7 +13,6 @@ RUN mkdir -p /javafx-sdk \
     && rm -rf /javafx-sdk/javafx-sdk-21.0.2 javafx.zip
 
 COPY target/ShoppingCartApp-1.0-SNAPSHOT.jar app.jar
-COPY .env .env
 
 CMD ["java", "-Dprism.order=sw", "--module-path", "/javafx-sdk/lib", \
      "--add-modules", "javafx.controls,javafx.fxml,javafx.swing", \
