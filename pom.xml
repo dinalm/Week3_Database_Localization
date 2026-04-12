@@ -15,6 +15,20 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javafx.version>21</javafx.version>
+        <!-- SonarQube -->
+        <sonar.projectKey>shopping-cart-week3</sonar.projectKey>
+        <sonar.projectName>Shopping Cart Week 3</sonar.projectName>
+        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+
+        <sonar.exclusions>
+            src/main/java/com/shoppingcart/Main.java,
+            src/main/java/com/shoppingcart/MainController.java
+        </sonar.exclusions>
+        <sonar.coverage.exclusions>
+            src/main/java/com/shoppingcart/Main.java,
+            src/main/java/com/shoppingcart/MainController.java
+        </sonar.coverage.exclusions>
     </properties>
 
     <dependencies>
@@ -84,6 +98,17 @@
                         <id>report</id>
                         <phase>test</phase>
                         <goals><goal>report</goal></goals>
+                    </execution>
+                    <execution>
+                        <id>report-xml</id>
+                        <phase>verify</phase>
+                        <goals><goal>report</goal></goals>
+                        <configuration>
+                            <formats>
+                                <format>XML</format>
+                            </formats>
+                            <outputDirectory>target/site/jacoco</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

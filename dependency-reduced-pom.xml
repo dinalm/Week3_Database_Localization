@@ -35,6 +35,19 @@
               <goal>report</goal>
             </goals>
           </execution>
+          <execution>
+            <id>report-xml</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+            <configuration>
+              <formats>
+                <format>XML</format>
+              </formats>
+              <outputDirectory>target/site/jacoco</outputDirectory>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
       <plugin>
@@ -81,9 +94,17 @@
     </dependency>
   </dependencies>
   <properties>
-    <maven.compiler.target>21</maven.compiler.target>
+    <sonar.projectName>Shopping Cart Week 3</sonar.projectName>
     <maven.compiler.source>21</maven.compiler.source>
+    <sonar.host.url>http://localhost:9000</sonar.host.url>
+    <sonar.exclusions>src/main/java/com/shoppingcart/Main.java,
+            src/main/java/com/shoppingcart/MainController.java</sonar.exclusions>
+    <maven.compiler.target>21</maven.compiler.target>
+    <sonar.projectKey>shopping-cart-week3</sonar.projectKey>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javafx.version>21</javafx.version>
+    <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.coverage.exclusions>src/main/java/com/shoppingcart/Main.java,
+            src/main/java/com/shoppingcart/MainController.java</sonar.coverage.exclusions>
   </properties>
 </project>
