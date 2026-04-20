@@ -66,7 +66,7 @@ pipeline {
                 withSonarQubeEnv('SonarQubeServer') {
                     bat """
                         mvn sonar:sonar ^
-                        -Dsonar.projectKey=shopping-cart-week3 ^
+                        -Dsonar.projectKey=shopping-cart-week5 ^
                         -Dsonar.host.url=http://localhost:9000 ^
                         -Dsonar.token=%SONAR_TOKEN%
                     """
@@ -85,7 +85,7 @@ pipeline {
             steps {
                 echo 'Pushing Docker image to Docker Hub...'
                 bat """
-                    echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
+                    docker login -u %DOCKERHUB_CREDENTIALS_USR% -p %DOCKERHUB_CREDENTIALS_PSW%
                     docker push %IMAGE_NAME%:%IMAGE_TAG%
                 """
             }
