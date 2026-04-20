@@ -8,6 +8,7 @@ pipeline {
         DB_URL = credentials('db-url')
         DB_USER = credentials('db-user')
         DB_PASSWORD = credentials('db-password')
+        SONAR_TOKEN = credentials('sonar-token')
     }
 
     tools {
@@ -55,6 +56,20 @@ pipeline {
                             classPattern: 'target/classes',
                             sourcePattern: 'src/main/java'
                     )
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                echo 'Running SonarQube analysis...'
+                withSonarQubeEnv('SonarQubeServer') {
+                    bat """
+                        mvn sonar:sonar ^
+                        -Dsonar.projectKey=shopping-cart-week3 ^
+                        -Dsonar.host.url=http://localhost:9000 ^
+                        -Dsonar.token=%SONAR_TOKEN%
+                    """
                 }
             }
         }
