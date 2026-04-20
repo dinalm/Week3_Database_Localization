@@ -16,8 +16,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javafx.version>21</javafx.version>
         <!-- SonarQube -->
-        <sonar.projectKey>shopping-cart-week3</sonar.projectKey>
-        <sonar.projectName>Shopping Cart Week 3</sonar.projectName>
+        <sonar.projectKey>shopping-cart-week5</sonar.projectKey>
+        <sonar.projectName>Shopping Cart Week 5</sonar.projectName>
         <sonar.host.url>http://localhost:9000</sonar.host.url>
         <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 
